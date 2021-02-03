@@ -5,11 +5,9 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="pink voice"
+        android:label="핑크보이스"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication3">
-
-
         <activity
             android:name=".LoadingActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -18,11 +16,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:name=".RegisterActivity"
+             />
 
     </application>
 
