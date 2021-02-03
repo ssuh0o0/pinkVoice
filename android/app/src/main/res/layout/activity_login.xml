@@ -87,17 +87,6 @@
                 android:padding="10dp">
 
                 <Button
-                    android:id="@+id/loginButton"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="right"
-                    android:background="@color/colorLogin"
-                    android:text="@string/log_in"
-                    android:textSize="20sp"
-                    app:backgroundTint="@color/colorLogin"
-                    tools:ignore="ButtonStyle,RtlHardcoded" />
-
-                <Button
                     android:id="@+id/registerButton"
                     android:layout_width="100dp"
                     android:layout_height="25dp"
@@ -106,8 +95,18 @@
                     android:rotationX="0"
                     android:text="@string/sign_in"
                     android:textSize="20sp"
-                    app:backgroundTint="@color/colorSignin"
-                    tools:ignore="ButtonStyle,RtlHardcoded" />
+                    app:backgroundTint="@color/colorSignin"/>
+
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:background="@color/colorLogin"
+                    android:text="@string/log_in"
+                    android:textSize="20dp"
+                    app:backgroundTint="@color/colorLogin"/>
+
 
             </LinearLayout>
 
