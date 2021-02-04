@@ -4,45 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:id="@+id/mainBack">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackground"
         android:orientation="vertical"
-        android:background="@color/colorBackground">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-26dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:orientation="vertical"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="150dp"
-                android:src="@drawable/pinkvoice">
-            </ImageView>
+                android:src="@drawable/pinkvoice"></ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:text="@string/pink_voice"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp">
-            </TextView>
+                android:textStyle="bold"></TextView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/nameText"
@@ -56,7 +59,7 @@
                 android:hint="@string/name"
                 android:padding="10dp"
                 android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"/>
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/idText"
@@ -72,34 +75,35 @@
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 android:textSize="20sp" />
+
             <Button
+                android:id="@+id/certificate"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:background="@color/colorSignin"
                 android:layout_marginTop="10dp"
-                android:textSize="20dp"
+                android:background="@color/colorSignin"
                 android:text="인증"
-                android:textStyle="bold"
-                android:id="@+id/certificate">
+                android:textSize="20dp"
+                android:textStyle="bold">
 
             </Button>
 
 
             <EditText
-                android:inputType="textPassword"
+                android:id="@+id/passwordText"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/PASSWORD"
                 android:layout_gravity="center"
-                android:padding="10dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#FFFFFF"
-                android:id="@+id/passwordText"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary"/>
+                android:hint="@string/PASSWORD"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <Button
                 android:id="@+id/registerButton"
