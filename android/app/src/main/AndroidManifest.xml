@@ -33,7 +33,7 @@
             android:theme="@style/Theme.Test.NoActionBar"/>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Test.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat"/>
 
     </application>
 

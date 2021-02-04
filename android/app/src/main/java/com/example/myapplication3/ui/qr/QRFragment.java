@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.dashboard;
+package com.example.myapplication3.ui.qr;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,19 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.R;
+import com.example.myapplication3.R;
 
-public class DashboardFragment extends Fragment {
+public class QRFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private QRViewModel QRViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        QRViewModel =
+                new ViewModelProvider(this).get(QRViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_qr, container, false);
+        final TextView textView = (TextView)root.findViewById(R.id.text_qr);
+        QRViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
