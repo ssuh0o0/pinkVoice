@@ -99,7 +99,6 @@ public class LoginActivity extends Activity {
 
                     ArrayList users = (ArrayList) snapshot.getValue();
 
-
                     for(int i = 1; i <= userCount; i ++ ) {
                         Log.d(LOGINTAB, "USERS:" + users.get(i));
                         HashMap user = (HashMap) users.get(i);

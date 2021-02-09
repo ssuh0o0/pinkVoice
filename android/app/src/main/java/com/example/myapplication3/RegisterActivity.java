@@ -119,6 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else {
                     // 먼저 인증이 되어있는 지 확인 후 회원가입 진행
+                    // userIndex 변경해줘야 함
                     readIsCert("1", getUserID, getUserPW, getNameText);
                 }
             }
@@ -126,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // 인증 버튼 -> isCert: false => true
+    // userIndex 변경해줘야 함
     private void certificateUser(String userIndex, String userID, String userName) {
 
         mDatabase.child("Cert").child("1").addValueEventListener(new ValueEventListener() {
@@ -220,6 +222,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    // 회원 가입 전 인증이 완료되었는지 확인
+    // userIndex 변경해줘야 함
     private void readIsCert(String userIndex, String userID, String password, String userName){
 
         final DatabaseReference isCertRef = mDatabase.child("Cert").child("1").child("isCert");
