@@ -109,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    // 인증 버튼 -> isCert: false => true
     private void certificateUser(String userIndex, String userID, String password, String userName) {
         User user = new User(userID, "", userName);
 
@@ -131,9 +132,27 @@ public class RegisterActivity extends AppCompatActivity {
 
                     if(userID.equals(post.getCertNumber().toString())) {
                         Toast.makeText(RegisterActivity.this, "임산부 인증이 완료되었습니다", Toast.LENGTH_LONG).show();
-                        writeNewUser("1", userID, password, userName);
+                        // writeNewUser("1", userID, password, userName);
+
+                        Cert cert = new Cert(Integer.parseInt(userID), userName, true);
+                        mDatabase.child("Cert").child(userIndex).setValue(cert)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // Write was successful!
+                                        Toast.makeText(RegisterActivity.this, "저장을 완료했습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Write failed
+                                        Toast.makeText(RegisterActivity.this, "저장을 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
                     } else {
-                        Toast.makeText(RegisterActivity.this, "인증번호와 이름이 일치하지 않습니다", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "인증번호 또는 이름이 일치하지 않습니다", Toast.LENGTH_LONG).show();
                     }
 
                 } else {
