@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText nameText;
@@ -111,7 +113,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     // 인증 버튼 -> isCert: false => true
     private void certificateUser(String userIndex, String userID, String password, String userName) {
-        User user = new User(userID, "", userName);
 
         mDatabase.child("Cert").child("1").addValueEventListener(new ValueEventListener() {
             @Override
@@ -126,16 +127,19 @@ public class RegisterActivity extends AppCompatActivity {
 //                }
 
                 if(dataSnapshot.getValue() != null){
-                    Cert post = dataSnapshot.getValue(Cert.class);
-                    //Log.w("FireBaseData", "getData" + post.toString());
-                    Log.d("TAB", "TEST::"+post.getCertName()+post.getCertNumber());
+                    HashMap data = (HashMap) dataSnapshot.getValue();
+                    Long dbCertNumber = (Long) data.get("certNumber");
+                    String dbCertName = (String) data.get("certName");
+                    Boolean dbIsCert = (Boolean) data.get("isCert");
 
-                    if(userID.equals(post.getCertNumber().toString())) {
+                    Cert cert = new Cert(dbCertNumber, dbCertName, dbIsCert);
+                    // 인증이 일치하는 경우
+                    if(userID.equals(cert.getCertNumber().toString()) && userName.equals(cert.getCertName())) {
                         Toast.makeText(RegisterActivity.this, "임산부 인증이 완료되었습니다", Toast.LENGTH_LONG).show();
                         // writeNewUser("1", userID, password, userName);
 
-                        Cert cert = new Cert(Integer.parseInt(userID), userName, true);
-                        mDatabase.child("Cert").child(userIndex).setValue(cert)
+                        final DatabaseReference isCertRef = mDatabase.child("Cert").child(userIndex).child("isCert");
+                        isCertRef.setValue(true)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
@@ -152,7 +156,19 @@ public class RegisterActivity extends AppCompatActivity {
                                 });
 
                     } else {
-                        Toast.makeText(RegisterActivity.this, "인증번호 또는 이름이 일치하지 않습니다", Toast.LENGTH_LONG).show();
+                        // 인증번호만 일치하는 경우
+                        if(userID.equals(cert.getCertNumber().toString()) && !userName.equals(cert.getCertName())) {
+                            Toast.makeText(RegisterActivity.this, "이름이 일치하지 않습니다", Toast.LENGTH_LONG).show();
+                        }
+                        // 이름만 일치하는 경우
+                        else if (!userID.equals(cert.getCertNumber().toString()) && userName.equals(cert.getCertName())) {
+                            Toast.makeText(RegisterActivity.this, "인증번호가 일치하지 않습니다", Toast.LENGTH_LONG).show();
+                        }
+                        // 둘 다 일치하지 않은 경우
+                        else {
+                            Toast.makeText(RegisterActivity.this, "일치하는 정보가 없습니다", Toast.LENGTH_LONG).show();
+                        }
+
                     }
 
                 } else {

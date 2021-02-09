@@ -12,25 +12,25 @@ public class Cert {
 
     @PrimaryKey
     @NonNull
-    public Integer certNumber;
+    public Long certNumber;
     public String certName;
     public Boolean isCert;
 
     public Cert() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        // Default constructor required for calls to DataSnapshot.getValue(Cert.class)
     }
 
-    public Cert(Integer certNumber, String certName, Boolean isCert) {
+    public Cert(Long certNumber, String certName, Boolean isCert) {
         this.certNumber = certNumber;
         this.certName = certName;
         this.isCert = isCert;
     }
 
-    public Integer getCertNumber() {
+    public Long getCertNumber() {
         return certNumber;
     }
 
-    public void setCertNumber(Integer certNumber) {
+    public void setCertNumber(Long certNumber) {
         this.certNumber = certNumber;
     }
 
@@ -48,9 +48,9 @@ public class Cert {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userName='" + certNumber + '\'' +
-                ", email='" + certName + '\'' +
+        return "Cert{" +
+                "certNumber='" + certNumber + '\'' +
+                ", certName='" + certName + '\'' +
                 ", isCert='" + isCert + '\'' +
                 '}';
     }
