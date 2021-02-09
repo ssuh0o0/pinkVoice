@@ -97,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        // 회원가입 버튼
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -201,7 +202,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void writeNewUser(String userIndex, String userID, String password, String userName) {
         User user = new User(userID, password, userName);
 
-        mDatabase.child("users").child(userIndex).setValue(user)
+        mDatabase.child("Users").child(userIndex).setValue(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -225,15 +226,38 @@ public class RegisterActivity extends AppCompatActivity {
         isCertRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 if(snapshot.exists()){
                     Boolean dbIsCert = (Boolean) snapshot.getValue();
-
                     if(dbIsCert) {
-                        Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
-                        writeNewUser(userIndex, userID, password, userName);
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        RegisterActivity.this.startActivity(intent);
-                        finish();
+
+                        final DatabaseReference isExistUser = mDatabase.child("Users").child("1").child("userID");
+
+                        isExistUser.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshotdata) {
+                                if (snapshotdata.exists()) {
+                                    String dbUserID = (String) snapshotdata.getValue();
+                                    // 이미 Users에 일치하는 정보가 있을 경우
+                                    if(dbUserID.equals(userID)) {
+                                        Toast.makeText(RegisterActivity.this, "이미 가입된 회원입니다", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                else {
+                                    Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
+                                    writeNewUser(userIndex, userID, password, userName);
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    RegisterActivity.this.startActivity(intent);
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                     } else {
                         Toast.makeText(RegisterActivity.this, "인증을 먼저 완료해주세요", Toast.LENGTH_SHORT).show();
                     }
