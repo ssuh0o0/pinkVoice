@@ -14,14 +14,16 @@ public class Cert {
     @NonNull
     public Integer certNumber;
     public String certName;
+    public Boolean isCert;
 
     public Cert() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Cert(Integer certNumber, String certName) {
+    public Cert(Integer certNumber, String certName, Boolean isCert) {
         this.certNumber = certNumber;
         this.certName = certName;
+        this.isCert = isCert;
     }
 
     public Integer getCertNumber() {
@@ -40,11 +42,16 @@ public class Cert {
         this.certName = certName;
     }
 
+    public Boolean getIsCert() { return isCert; }
+
+    public void setIsCert(Boolean isCert) { this.isCert = isCert; }
+
     @Override
     public String toString() {
         return "User{" +
                 "userName='" + certNumber + '\'' +
                 ", email='" + certName + '\'' +
+                ", isCert='" + isCert + '\'' +
                 '}';
     }
 }
