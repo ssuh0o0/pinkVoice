@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.example.myapplication3.data.LoginRepository;
 import com.example.myapplication3.data.model.Cert;
 import com.example.myapplication3.data.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -24,13 +25,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-public class RegisterActivity<DatabaseReference> extends AppCompatActivity {
-=======
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
->>>>>>> upstream/main
 
     EditText nameText;
     EditText idText;
@@ -42,8 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAB = "RegisterActivity";
 
     private DatabaseReference mDatabase;
-    private LoginRepository FirebaseDatabase;
-    
 
     @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
