@@ -1,26 +1,21 @@
 package com.example.myapplication3;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.example.myapplication3.data.LoginRepository;
 import com.example.myapplication3.data.model.Cert;
 import com.example.myapplication3.data.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
@@ -29,7 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity<DatabaseReference> extends AppCompatActivity {
 
     EditText nameText;
     EditText idText;
@@ -41,6 +36,8 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAB = "RegisterActivity";
 
     private DatabaseReference mDatabase;
+    private LoginRepository FirebaseDatabase;
+    
 
     @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
