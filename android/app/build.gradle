@@ -50,4 +50,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.4.0')
     implementation 'com.google.firebase:firebase-analytics'
     annotationProcessor 'androidx.room:room-compiler:2.2.6'
+
+    //ted permission
+    implementation "gun0912.ted:tedpermission:2.1.0"
+    //qr 코드
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
 }

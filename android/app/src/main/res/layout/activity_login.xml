@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:id="@+id/loginBack">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,7 +93,6 @@
                     android:layout_height="25dp"
                     android:layout_gravity="left"
                     android:background="@color/colorSignin"
-                    android:rotationX="0"
                     android:text="@string/sign_up"
                     android:textSize="20sp"
                     app:backgroundTint="@color/colorSignin"/>
