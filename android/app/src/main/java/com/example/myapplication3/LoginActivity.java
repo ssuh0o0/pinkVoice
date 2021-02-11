@@ -107,7 +107,7 @@ public class LoginActivity extends Activity {
 
                     if(user.getUserID().equals(idText) && user.getPassword().equals(passwordText)) {
                         Toast.makeText(LoginActivity.this, "로그인 완료", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                        Intent intent = new Intent(getBaseContext(), SeatView.class);
                         startActivity(intent);
                         finish();
                     }
