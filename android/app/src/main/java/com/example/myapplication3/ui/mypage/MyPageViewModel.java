@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 public class MyPageViewModel extends ViewModel {
 
+
     private MutableLiveData<String> mText;
 
     public MyPageViewModel() {
