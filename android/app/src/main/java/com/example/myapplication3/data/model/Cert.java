@@ -8,8 +8,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @Entity(tableName = "Cert")
 @IgnoreExtraProperties
-public class Cert {
 
+public class Cert {
     @PrimaryKey
     @NonNull
     public Long certNumber;

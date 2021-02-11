@@ -9,7 +9,6 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @Entity(tableName = "User")
 @IgnoreExtraProperties
 public class User {
-
     @PrimaryKey
     @NonNull
     public String userID;
