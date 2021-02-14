@@ -1,5 +1,6 @@
 package com.example.myapplication3;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
@@ -10,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
@@ -62,18 +64,26 @@ public class MainActivity extends AppCompatActivity {
         imageView.getLayoutParams().width = bitmapWidth;
         imageView.getLayoutParams().height = bitmapHeight;
 
+        Button button=findViewById(R.id.Chungmuro);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,SubwayTimeActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        getAbsCoord(R.id.imageView);
+        //getAbsCoord(R.id.imageView);
 
     }
 
-    private void getAbsCoord(int resId) {
-        View v = findViewById(resId);
-        if (v == null) throw new IllegalArgumentException("this is not a view");
-        Rect r = new Rect(); v.getGlobalVisibleRect(r); //RootView 레이아웃을 기준으로한 좌표.
-        // custom Log
-        //Log.i(v.getResources().getResourceName(resId).split(":")[1] + " 의절대좌표::", r.left, r.top, r.right, r.bottom);
-    }
+//    private void getAbsCoord(int resId) {
+//        View v = findViewById(resId);
+//        if (v == null) throw new IllegalArgumentException("this is not a view");
+//        Rect r = new Rect(); v.getGlobalVisibleRect(r); //RootView 레이아웃을 기준으로한 좌표.
+//        // custom Log
+//        //Log.i(v.getResources().getResourceName(resId).split(":")[1] + " 의절대좌표::", r.left, r.top, r.right, r.bottom);
+//    }
 
     // 식별자 지정
     private String getUUID() {
