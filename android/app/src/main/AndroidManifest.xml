@@ -47,6 +47,9 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat" />
 
+        <meta-data
+            android:name="com.example.myapplication3.API_KEY"
+            android:value="API KEY 넣기"/>
     </application>
 
 </manifest>

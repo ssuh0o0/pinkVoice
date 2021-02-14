@@ -31,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //큐알코드 - main activity
+//        IntentIntegrator integrator = new IntentIntegrator(this);
+//
+//        integrator.setOrientationLocked(false);
+//        integrator.setPrompt("Scan QR code");
+//        integrator.setBeepEnabled(false); //beep sound when the QR code is scanned
+//
+//        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+//
+//        integrator.initiateScan();
 
 
 
@@ -114,19 +124,13 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.navigation_qr:
-                                mSearch.setVisible(false);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.container, qr).commit();
-                                return true;
 
                             case R.id.navigation_mypage:
                                 mSearch.setVisible(false);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.container, mypage).commit();
                                 return true;
 
                             case R.id.navigation_home:
                                 mSearch.setVisible(true);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.container, home).commit();
-
                                 return true;
                         }
                         return false;

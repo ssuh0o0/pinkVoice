@@ -13,8 +13,7 @@
         android:icon="@drawable/icon"
         android:label="핑크보이스"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication3"
-        android:hardwareAccelerated="true">
+        android:theme="@style/Theme.MyApplication3">
         <activity
             android:name=".LoadingActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -27,6 +26,11 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.Test.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".RegisterActivity"
