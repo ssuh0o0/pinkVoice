@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -50,6 +51,8 @@ public class SeatView extends AppCompatActivity {
 
     private String deviceToken;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +96,18 @@ public class SeatView extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         showSeatStatus("1");
+
+        swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // call method for refresh
+                showSeatStatus("1");
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
 //        button1_3_1.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -538,7 +553,9 @@ public class SeatView extends AppCompatActivity {
 
                     if (!seatUser.equals("")) {
                         button1_3_1.setBackgroundColor(getColor(R.color.usedSeat));
-                        Toast.makeText(SeatView.this, "좌석 이용이 시작됩니다", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        button1_3_1.setBackgroundColor(getColor(R.color.emptySeat));
                     }
                 }
             }
