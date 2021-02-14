@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
                             case R.id.navigation_mypage:
                                 mSearch.setVisible(false);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.container, mypage).commit();
                                 return true;
 
                             case R.id.navigation_home:
