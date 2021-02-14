@@ -1,13 +1,21 @@
 package com.example.myapplication3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.myapplication3.data.model.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SeatView extends AppCompatActivity {
 
@@ -31,6 +39,10 @@ public class SeatView extends AppCompatActivity {
     Button button9_3_5;
     Button button10_3_1;
     Button button10_3_5;
+
+    private DatabaseReference mDatabase;
+
+    private String deviceToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +80,13 @@ public class SeatView extends AppCompatActivity {
         button10_3_5 = findViewById(R.id.button10_3_5);
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
+        deviceToken = sharedPreferences.getString("inputToken", "");
+
+        // firebase 정의
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
         button1_3_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +97,8 @@ public class SeatView extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(SeatView.this, "좌석 이용이 시작됩니다", Toast.LENGTH_SHORT).show();
+                        //useSeatID("1", );
+                        useSeatToken("1", deviceToken);
                     }
                 });
                 builder.setNegativeButton("취소", null);
@@ -428,8 +449,50 @@ public class SeatView extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void useSeatID(String seatNumber, String userID) {
 
+        final DatabaseReference seatRef = mDatabase.child("Seats").child("seat"+seatNumber).child("seatUser");
+
+        seatRef.setValue(userID)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Write was successful!
+                        //Toast.makeText(RegisterActivity.this, "저장을 완료했습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                        Toast.makeText(SeatView.this, "저장을 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
+
+    private void useSeatToken(String seatNumber, String deviceToken) {
+
+        final DatabaseReference seatRef = mDatabase.child("Seats").child("seat"+seatNumber).child("seatToken");
+
+        seatRef.setValue(deviceToken)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Write was successful!
+                        //Toast.makeText(RegisterActivity.this, "저장을 완료했습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                        Toast.makeText(SeatView.this, "저장을 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
 }
