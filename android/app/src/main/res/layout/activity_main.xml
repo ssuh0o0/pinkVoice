@@ -53,12 +53,23 @@
                     android:layout_height="wrap_content" />
 
                 <Button
+                    android:layout_marginTop="610dp"
+                    android:layout_marginLeft="970dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:background="#4CAF50"
-                    android:id="@+id/text1"
-                    android:text="충무로" />
+                    android:textSize="20sp"
+                    android:background="#FF0000"
+                    android:id="@+id/Chungmuro"
+                    android:text="충" />
+                <Button
+                    android:layout_marginTop="780dp"
+                    android:layout_marginLeft="1075dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:background="#0100FF"
+                    android:id="@+id/Oksu"
+                    android:text="옥수" />
 
             </RelativeLayout>
 
