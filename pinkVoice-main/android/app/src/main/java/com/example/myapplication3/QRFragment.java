@@ -23,7 +23,8 @@ public class QRFragment extends Fragment {
 
         IntentIntegrator integrator = IntentIntegrator.forSupportFragment(QRFragment.this);
 
-        integrator.setOrientationLocked(false);
+        integrator.setCaptureActivity(CaptureForm.class); //큐알 꾸민거
+        integrator.setOrientationLocked(false); //큐알 세로화면
         integrator.setPrompt("Scan QR code");
         integrator.setBeepEnabled(false); //큐알 스캔되면 효과음 나중에 필요하면 true로 바꾸기
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
@@ -45,9 +46,10 @@ public class QRFragment extends Fragment {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if(result!=null){
+            //스캔 안된 경우
             if(result.getContents() == null){
                 Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_LONG).show();
-            } else{
+            } else{ //스캔 된 경우
                 Toast.makeText(getContext(), "Scanned : " + result.getContents(), Toast.LENGTH_LONG).show();
             }
         }
