@@ -23,11 +23,12 @@ public class QRFragment extends Fragment {
 
         IntentIntegrator integrator = IntentIntegrator.forSupportFragment(QRFragment.this);
 
-        integrator.setOrientationLocked(false);
+        integrator.setCaptureActivity(CaptureForm.class); //큐알 꾸민거
+        integrator.setOrientationLocked(false); //큐알 세로화면
         integrator.setPrompt("Scan QR code");
         integrator.setBeepEnabled(false); //큐알 스캔되면 효과음 나중에 필요하면 true로 바꾸기
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-
+        
         integrator.initiateScan();
     }
 
