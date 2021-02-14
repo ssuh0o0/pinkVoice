@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication3">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--큐알스캔-->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="핑크보이스"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication3">
+        <activity
+            android:name=".LoadingActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.Test.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.Test.NoActionBar"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat"/>
+
+    </application>
+
+</manifest>
