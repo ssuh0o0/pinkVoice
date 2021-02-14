@@ -1,11 +1,13 @@
 package com.example.myapplication3;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.view.View;
@@ -98,11 +100,13 @@ public class SeatView extends AppCompatActivity {
                 builder.setTitle("좌석 선택");
                 builder.setMessage("1-3의 1번 좌석을 이용하시겠습니까?");
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(SeatView.this, "좌석 이용이 시작됩니다", Toast.LENGTH_SHORT).show();
                         useSeatID("1", deviceToken);
                         useSeatToken("1", deviceToken);
+                        button1_3_1.setBackgroundColor(getColor(R.color.usedSeat));
                     }
                 });
                 builder.setNegativeButton("취소", null);
