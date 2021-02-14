@@ -1,12 +1,15 @@
 package com.example.myapplication3;
 
 import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.content.res.Resources;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
@@ -59,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
         imageView.getLayoutParams().width = bitmapWidth;
         imageView.getLayoutParams().height = bitmapHeight;
 
+
+        getAbsCoord(R.id.imageView);
+
+    }
+
+    private void getAbsCoord(int resId) {
+        View v = findViewById(resId);
+        if (v == null) throw new IllegalArgumentException("this is not a view");
+        Rect r = new Rect(); v.getGlobalVisibleRect(r); //RootView 레이아웃을 기준으로한 좌표.
+        // custom Log
+        //Log.i(v.getResources().getResourceName(resId).split(":")[1] + " 의절대좌표::", r.left, r.top, r.right, r.bottom);
     }
 
     // 식별자 지정
