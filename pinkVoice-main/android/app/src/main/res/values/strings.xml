@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">test</string>
+    <string name="완료">완료</string>
+    <string name="PASSWORD">PASSWORD</string>
+    <string name="pink_voice">임산부를 위한 Pink Voice</string>
+    <string name="id">ID</string>
+    <string name="password">PASSWORD</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="todo">TODO</string>
+    <string name="name">이름</string>
+    <string name="ownnum">ID 임산부 고유 번호</string>
+    <string name="title_home">Home</string>
+    <string name="title_qr">QRcode</string>
+    <string name="title_mypage">MyPage</string>
+    <string name="sign_up">Sign up</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

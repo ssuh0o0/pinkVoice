@@ -15,27 +15,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="352dp"
-            android:background="@color/colorPrimary"
-            android:orientation="vertical">
+            android:layout_height="350dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
 
             <ImageView
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="100dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/pinkvoice"></ImageView>
+                android:src="@drawable/pinkvoice"
+                android:contentDescription="@string/todo">
+            </ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
                 android:text="@string/pink_voice"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"
+                android:layout_marginTop="20dp">
+            </TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -48,7 +50,7 @@
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_margin="50dp"
                 android:autofillHints="True"
                 android:background="@color/colorPrimary"
                 android:drawableStart="@drawable/ic_baseline_person_24"
@@ -91,6 +93,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="left"
                     android:background="@color/colorSignin"
+                    android:rotationX="0"
                     android:text="@string/sign_up"
                     android:textSize="20sp"
                     app:backgroundTint="@color/colorSignin"/>
