@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,8 +15,11 @@ import android.widget.Toast;
 import com.example.myapplication3.data.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SeatView extends AppCompatActivity {
 
@@ -97,7 +101,7 @@ public class SeatView extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(SeatView.this, "좌석 이용이 시작됩니다", Toast.LENGTH_SHORT).show();
-                        //useSeatID("1", );
+                        useSeatID("1", deviceToken);
                         useSeatToken("1", deviceToken);
                     }
                 });
@@ -451,7 +455,7 @@ public class SeatView extends AppCompatActivity {
 
     }
 
-    private void useSeatID(String seatNumber, String userID) {
+    private void useSeat(String seatNumber, String userID) {
 
         final DatabaseReference seatRef = mDatabase.child("Seats").child("seat"+seatNumber).child("seatUser");
 
@@ -492,7 +496,28 @@ public class SeatView extends AppCompatActivity {
                         Toast.makeText(SeatView.this, "저장을 실패했습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
 
+    private void useSeatID(String seatNumber, String deviceToken) {
+
+        final DatabaseReference userRef = mDatabase.child("Users").child(deviceToken);
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    User user = snapshot.getValue(User.class);
+
+                    useSeat(seatNumber, user.getUserID());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
     }
 
 }
