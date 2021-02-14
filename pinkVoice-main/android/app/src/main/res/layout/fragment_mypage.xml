@@ -9,23 +9,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
 
         <ImageView
             android:id="@+id/userPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:src="@drawable/barbie"/>
 
-        </ImageView>
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="username"
-            android:textSize="20dp"
+            android:textSize="40dp"
             android:textColor="#000000"
+            android:textAlignment="center"
             android:layout_gravity="center_horizontal"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Log out "
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_marginTop="50dp"
+            android:background="@color/colorSignin"
+            android:layout_gravity="center_horizontal"
+            />
+
     </LinearLayout>
 
 </FrameLayout>

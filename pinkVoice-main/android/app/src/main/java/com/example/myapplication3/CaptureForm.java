@@ -33,7 +33,7 @@ public class CaptureForm extends CaptureActivity {
         GradientDrawable gd = new GradientDrawable();
         //gd.setColor(Color.parseColor("#F380A1"));
         gd.setCornerRadius(5);
-        gd.setStroke(3, Color.parseColor("#F380A1"));
+        gd.setStroke(30, Color.parseColor("#F380A1"));
         textView.setBackground(gd);
 
         //상단 텍스트뷰 추가
