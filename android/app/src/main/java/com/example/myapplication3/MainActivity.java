@@ -12,8 +12,10 @@ import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.ScrollView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -21,12 +23,22 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     ScrollView scrollView;
     ImageView imageView;
     BitmapDrawable bitmap;
+
+    XmlPullParser xpp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +80,14 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(MainActivity.this,SubwayTimeActivity.class);
                 startActivity(intent);
+
             }
         });
+
+
 
         //getAbsCoord(R.id.imageView);
 
@@ -89,5 +105,6 @@ public class MainActivity extends AppCompatActivity {
     private String getUUID() {
         return UUID.randomUUID().toString();
     }
+
 
 }

@@ -60,7 +60,7 @@
                     android:textSize="20sp"
                     android:background="#FF0000"
                     android:id="@+id/Chungmuro"
-                    android:text="충" />
+                    android:text="충무로" />
                 <Button
                     android:layout_marginTop="780dp"
                     android:layout_marginLeft="1075dp"
