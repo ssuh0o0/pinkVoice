@@ -2,7 +2,6 @@ package com.example.myapplication3;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -43,8 +42,9 @@ public class SubwayTimeActivity extends AppCompatActivity {
         }).start();
     }
     String getXmlData(){
+        Button button = findViewById(R.id.Chungmuro);
         StringBuffer buffer=new StringBuffer();
-        @SuppressLint("ResourceType") String location = (String) getText(R.id.Chungmuro);
+        String location = URLEncoder.encode("충무로");
 
         String queryUrl="http://swopenAPI.seoul.go.kr/api/subway/534c5457527373753333556c6c476f/xml/realtimeStationArrival/0/5/"+location;
         try{
@@ -81,14 +81,19 @@ public class SubwayTimeActivity extends AppCompatActivity {
                             buffer.append(xpp.getText());//category 요소의 TEXT 읽어와서 문자열버퍼에 추가
                             buffer.append("\n");//줄바꿈 문자 추가
                         }
-                        else if(tag.equals("statnId")){
-                            buffer.append("지하철역ID :");
-                            xpp.next();
-                            buffer.append(xpp.getText());//description 요소의 TEXT 읽어와서 문자열버퍼에 추가
-                            buffer.append("\n");//줄바꿈 문자 추가
+                        else if(tag.equals("updnLine")){
+                            if (tag == "상행") {
+                                buffer.append("상행선 :");
+                                xpp.next();
+                                buffer.append(xpp.getText());//description 요소의 TEXT 읽어와서 문자열버퍼에 추가
+                                buffer.append("\n");//줄바꿈 문자 추가
+                            }
+                            else if (tag == "하행"){
+
+                            }
                         }
                         else if(tag.equals("statnNm")){
-                            buffer.append("충전기 명칭 :");
+                            buffer.append("지하철 명 :");
                             xpp.next();
                             buffer.append(xpp.getText());//telephone 요소의 TEXT 읽어와서 문자열버퍼에 추가
                             buffer.append("\n");//줄바꿈 문자 추가

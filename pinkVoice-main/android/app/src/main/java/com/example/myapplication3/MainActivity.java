@@ -1,38 +1,34 @@
 package com.example.myapplication3;
 
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.zxing.integration.android.IntentIntegrator;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
 
 public class MainActivity extends AppCompatActivity {
 
     Fragment qr;
     Fragment home;
     Fragment mypage;
+    MypageFragment MypageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
         //하단 탭
         qr = new QRFragment();
@@ -64,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        MypageFragment = new MypageFragment();
+
+        Button button = (Button) findViewById(R.id.logout);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -137,5 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+
+    
 
 }
